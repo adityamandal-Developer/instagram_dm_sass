@@ -9,6 +9,13 @@ import {
 import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
 import { AlignLeft } from "lucide-react";
 import Link from "next/link";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 export function SheetDemo() {
   return (
     <Sheet>
@@ -40,18 +47,16 @@ export function SheetDemo() {
           </MenubarMenu>
 
           <MenubarMenu>
-            <Link href={"profile"}>
-              <SheetClose asChild>
-                <MenubarTrigger className="">Profile</MenubarTrigger>
-              </SheetClose>
-            </Link>
-          </MenubarMenu>
-          <MenubarMenu>
-            <Link href={"login"}>
-              <SheetClose asChild>
-                <MenubarTrigger className="">Login</MenubarTrigger>
-              </SheetClose>
-            </Link>
+            {" "}
+            <SignedOut>
+              <div className="flex flex-col gap-4">
+                <SignInButton />
+                <SignUpButton />
+              </div>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </MenubarMenu>
         </Menubar>
       </SheetContent>

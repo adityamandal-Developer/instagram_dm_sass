@@ -1,15 +1,14 @@
-import {
-  Menubar,
-  MenubarContent,
-  MenubarMenu,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarSeparator,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
+import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
 import Link from "next/link";
 import { SheetDemo } from "./Sidebar";
 import Image from "next/image";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 
 export function Navbar() {
   return (
@@ -35,19 +34,20 @@ export function Navbar() {
 
         <MenubarMenu>
           <MenubarTrigger>
-            <Link href={"profile"}>Profile</Link>
+            <Link href={"profile"}>Contact</Link>
           </MenubarTrigger>
-          <MenubarContent>
-            <MenubarRadioGroup value="benoit">
-              <MenubarRadioItem value="andy">test@gmail.com</MenubarRadioItem>
-              <MenubarRadioItem value="benoit">Name</MenubarRadioItem>
-              <MenubarSeparator />
-              <MenubarRadioItem value="Luis">Logout</MenubarRadioItem>
-            </MenubarRadioGroup>
-          </MenubarContent>
         </MenubarMenu>
+
         <MenubarMenu>
-          <MenubarTrigger>Login</MenubarTrigger>
+          <SignedOut>
+            <div className="flex gap-4">
+              <SignInButton />
+              <SignUpButton />
+            </div>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
         </MenubarMenu>
       </Menubar>
       <nav className="flex sm:hidden justify-end">

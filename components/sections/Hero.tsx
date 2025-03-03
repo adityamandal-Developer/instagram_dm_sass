@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../ui/button";
-import { Ripple } from "../layout/ripple";
+import { Ripple } from "../ui/ripple";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -15,9 +16,11 @@ const Hero = () => {
           <Button className="bg-background border text-primary hover:text-foreground">
             Get started
           </Button>
-          <Button className="" variant={"outline"}>
-            Learn more
-          </Button>
+          <Link href={"/pricing"}>
+            <Button className="" variant={"outline"}>
+              Learn more
+            </Button>
+          </Link>
         </div>
         <Ripple mainCircleSize={10} numCircles={20} />
       </section>
